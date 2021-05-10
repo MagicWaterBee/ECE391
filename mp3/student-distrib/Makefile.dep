@@ -1,0 +1,30 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+interrupt_linkage.o: interrupt_linkage.S interrupt_linkage.h
+syscall_linkage.o: syscall_linkage.S syscall_linkage.h
+x86_desc.o: x86_desc.S x86_desc.h types.h
+exception.o: exception.c lib.h types.h exception.h syscall.h filesys.h \
+  paging.h
+filesys.o: filesys.c lib.h types.h filesys.h syscall.h paging.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c lib.h types.h x86_desc.h idt.h exception.h \
+  interrupt_linkage.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  tests.h idt.h rtc.h keyboard.h mouse.h paging.h filesys.h syscall.h \
+  terminal.h schedule.h speaker.h sb16.h
+keyboard.o: keyboard.c keyboard.h lib.h types.h i8259.h terminal.h \
+  speaker.h
+lib.o: lib.c lib.h types.h terminal.h syscall.h filesys.h paging.h rtc.h \
+  speaker.h
+mouse.o: mouse.c mouse.h types.h i8259.h keyboard.h lib.h
+paging.o: paging.c paging.h types.h lib.h
+rtc.o: rtc.c rtc.h types.h lib.h i8259.h tests.h
+sb16.o: sb16.c sb16.h types.h lib.h syscall.h filesys.h paging.h i8259.h
+schedule.o: schedule.c schedule.h i8259.h types.h terminal.h syscall.h \
+  filesys.h paging.h x86_desc.h lib.h
+speaker.o: speaker.c speaker.h lib.h types.h rtc.h schedule.h i8259.h
+syscall.o: syscall.c syscall.h types.h filesys.h paging.h lib.h \
+  x86_desc.h rtc.h terminal.h
+terminal.o: terminal.c terminal.h types.h keyboard.h syscall.h filesys.h \
+  paging.h lib.h
+tests.o: tests.c tests.h x86_desc.h types.h lib.h i8259.h idt.h rtc.h \
+  terminal.h filesys.h
