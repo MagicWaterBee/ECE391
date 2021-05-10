@@ -1,0 +1,34 @@
+bug #1
+Window doesn't scroll when player goes right. The player will stuck into the right boarder.
+sol #1
+Fixed draw_vert_line. The address for drawing is not simply switch x and y in draw_horiz_line.
+
+bug #2
+The characters in status bar scatter around and are not recognizable.
+sol #2
+The problem is that I didn't understand the VGA's 4 planes well. Adjacent pixels seperate a lot in video memory.
+
+bug #3
+The player will stuck into status bar.
+sol #3
+Modified IMAGE_Y_DIM in modex.h, limiting the image to not exceed the boarder of status bar.
+
+bug #4
+Implementation of masking wasn't working. The trace of player becomes mix-colored. Only black part ahead of player is eliminated.
+sol #4
+Instead of using one function, modified drawing function to let the previous image stored and draw again after show_screen().
+
+bug #5
+The color of wall and status bar didn't change.
+sol #5
+I wrote a function to change the array of palette, but didn't write it to corresponding register. Added two lines to load the palette.
+
+bug #6
+The text above fruits was messy.
+sol #6
+The printing method of fruit_text_buffer is different from text_to_buffer. One needs calculation and another uses absolute address in buffer.
+
+bug #7
+The text above fruits was black background and white text, no transparent color.
+sol #7
+When modifying the palette, should use original data instead of replacing it totally.
