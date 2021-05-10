@@ -7,4 +7,4 @@ mp1 is a simple moving image.
 
 mp2 is a mazegame.
 
-mp3 is an simple OS based on x86 structure. It was also contributed by my teammates, Guan Zimu, Xie Tian and Yuan Yue.
+mp3 is an simple OS based on x86 structure. Also contributed by my teammates, Guan Zimu, Xie Tian and Yuan Yue.
